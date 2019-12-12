@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1576096432 source:c:\users\ari\desktop\projet\manu\jeu_pendu\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"dictionnaire.h"
+
+1576095311 c:\users\ari\desktop\projet\manu\jeu_pendu\dictionnaire.h
+
+1576095311 source:c:\users\ari\desktop\projet\manu\jeu_pendu\dictionnaire.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"dictionnaire.h"
+
+1576095311 source:c:\users\ari\desktop\projet\jeu_pendu\dictionnaire.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"dictionnaire.h"
+
+1576095311 c:\users\ari\desktop\projet\jeu_pendu\dictionnaire.h
+
+1576185651 source:c:\users\ari\desktop\projet\jeu_pendu\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"dictionnaire.h"
+
+1576109123 source:c:\users\ari\desktop\projet\jeu_pendu\s.c
+
