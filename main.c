@@ -26,20 +26,18 @@ int main()
     long coupsRestants = 7; // Nombre de vie
     long i = 0; // Variable pour parcourir les tableaux
     long tailleMot = 0;
-                    printf ("===============Jeu du Pendu=================\n\n");
 
-    //while(!fin)
-    //{
+        printf ("===============Jeu du Pendu=================\n\n");
 
-        fichier = fopen ("test.txt","a");
-        if (fichier != NULL)
-        {
-           printf ("Entrer votre pseudo\n");
-           scanf ("%s",&pseudo);
-           fprintf(fichier,"\n%s ",pseudo);
-        }
-        fclose(fichier);
-        printf ("\n\n");
+    fichier = fopen ("test.txt","a");
+    if (fichier != NULL)
+    {
+        printf ("Entrer votre pseudo\n");
+        scanf ("%s",&pseudo);
+        fprintf(fichier,"\n%s ",pseudo);
+    }
+    fclose(fichier);
+    printf ("\n\n");
 
     menu3:
     printf("=====     Menu             =====\n\n");
@@ -53,7 +51,6 @@ int main()
     {
         case 0:
              return 0;
-
         break;
 
         case 1:
@@ -102,12 +99,12 @@ int main()
             if (gagner(lettreTrouver, tailleMot))
                 {
                     printf("\n  Vous avez gagner ! Le mot secret etait : %s\n", motSecret);
-            fichier = fopen ("score.txt","a");
-           // fichier = fopen ("test.txt","a");
-            if (fichier != NULL)
-            {
-                    fprintf(fichier,"%ld",coupsRestants);
-            }
+                    fichier = fopen ("score.txt","a");
+                   // fichier = fopen ("test.txt","a");
+                    if (fichier != NULL)
+                    {
+                        fprintf(fichier,"%ld",coupsRestants);
+                    }
                     fclose(fichier);
                 }
             else
@@ -121,8 +118,7 @@ int main()
                 printf("Vous etes tetu reessayer\n");
                 goto men;
             }
-
-        coupsRestants = 7;
+            coupsRestants = 7;
         break;
 
         case 2:
@@ -194,9 +190,6 @@ int main()
 
         break;
 
-
-       // }
-
     }
         printf("\n=====        Voulez vous revenir au Menu ?          =====\n");
         printf("=====        Taper 1 pour revenir au menu principal ou 0 pour terminer        =====\n");
@@ -211,9 +204,6 @@ int main()
      return 0;
 
 }
-
-
-
 
 char lireCaractere()
 {
@@ -241,11 +231,6 @@ int gagner(int lettreTrouver[], long tailleMot)
 
     return joueurgagner;
 }
-
-
-
-
-
 
 int rechercheLettre(char lettre, char motSecret[], int lettreTrouver[])
 {
