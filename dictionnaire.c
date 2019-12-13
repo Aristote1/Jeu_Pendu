@@ -1,13 +1,10 @@
 //****************************************Jeu de Pendu**********************************************
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h> // Permet de rechercher une lettre dans un mots
-
 #include "dictionnaire.h"
-
 
 int selectMot(char *motPioche)
 {
@@ -15,7 +12,6 @@ int selectMot(char *motPioche)
     int nombreMots = 0, numMotChoisi = 0, i = 0;
     int caractereLu = 0;
     dico = fopen("dictionnaire.txt", "r"); // On ouvre le dictionnaire en lecture seule
-
     // On vérifie si on a réussi à ouvrir le dictionnaire
     if (dico == NULL) // Si on n'a PAS réussi à ouvrir le fichier
     {
@@ -23,7 +19,6 @@ int selectMot(char *motPioche)
         return 0; // On retourne 0 pour indiquer que la fonction a échoué
         // A la lecture du return, la fonction s'arrête immédiatement.
     }
-
     // On compte le nombre de mots dans le fichier (il suffit de compter les
     // entrées \n
     do
@@ -44,14 +39,10 @@ int selectMot(char *motPioche)
             numMotChoisi--;
     }
 
-    /* Le curseur du fichier est positionné au bon endroit.
-    On n'a plus qu'à faire un fgets qui lira la ligne */
+    //* Le curseur du fichier est positionné au bon endroit.On n'a plus qu'à faire un fgets qui lira la ligne
     fgets(motPioche, 100, dico);
-
-    // On vire l'\n à la fin
-    motPioche[strlen(motPioche) - 1] = '\0';
+    motPioche[strlen(motPioche) - 1] = '\0'; // On vire l'\n à la fin
     fclose(dico);
-
     return 1; // Tout s'est bien passé, on retourne 1
 }
 

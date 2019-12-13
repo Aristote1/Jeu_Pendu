@@ -5,19 +5,20 @@
 #include <ctype.h>   //Permet d'utliser la fonction toupper() qui met en majuscule les lettre entrer par l'utilisateur
 #include <string.h> // Permet de rechercher une lettre dans un mots
 #include "dictionnaire.h"//Apelle de la fonction dictionnaire
-#define SIZE    32
-#define TAILLE_MAX 1000
+#define SIZE    32       //Permet de limiter le nombre de caractere du pseudo
+#define TAILLE_MAX 1000  //Permet de limiter le nombre de caractere dans un fichier
 
-FILE    *fichier = NULL;
-int gagner(int lettreTrouver[],long tailleMot);
-int rechercheLettre(char lettre, char motSecret[], int lettreTrouver[]);
-int verification(char *name, char *nom);
-char lireCaractere();
+    FILE    *fichier = NULL;
+    int gagner(int lettreTrouver[],long tailleMot);
+    int rechercheLettre(char lettre, char motSecret[], int lettreTrouver[]);
+    int verification(char *name, char *nom);
+    char lireCaractere();
 
 int main()
 {
-    char    pseudo[SIZE];
-    FILE* fichier = NULL;
+    printf ("=====================Jeu du Pendu====================\n\n");
+
+    char  pseudo[SIZE];
     int menu1,menu2,z;
     char lettre = 0; // Enregistre en memoire la lettre proposéepar l'utilisateur
     char motSecret[100] = {0}; // Le mot à Trouverr
@@ -27,8 +28,7 @@ int main()
     long i = 0; // Variable pour parcourir les tableaux
     long tailleMot = 0;
 
-        printf ("===============Jeu du Pendu=================\n\n");
-
+    menu3:
     fichier = fopen ("test.txt","a");
     if (fichier != NULL)
     {
@@ -39,7 +39,6 @@ int main()
     fclose(fichier);
     printf ("\n\n");
 
-    menu3:
     printf("=====     Menu             =====\n\n");
     printf("=====  1. Jouer            =====\n");
     printf("=====  2. Regle du jeu     =====\n");
@@ -56,7 +55,7 @@ int main()
         case 1:
 
             men:
-            printf("Bienvenue %s dans le Jeu de Pendu !\n Voulez vous commencer une partie ?\n\n============Tapez 1pour commencer et 0 pour revenir au menu===========\n",pseudo);
+            printf("Bienvenue %s dans le Jeu de Pendu !\n\nVoulez vous commencer une partie ?\n\n============Tapez 1 pour commencer et 0 pour revenir au menu===========\n",pseudo);
             scanf("%d",&z);
 
             if (z==0) goto menu3;
@@ -78,7 +77,7 @@ int main()
                 printf("\n Il vous reste %ld coups a jouer", coupsRestants);
                 printf("\n Quel est le mot secret ? ");
 
-//***********************On affiche le mot secret en masquant les lettres non trouvées******************************
+//*********************************On affiche le mot secret en masquant les lettres non trouvées******************************
 
                 for (i = 0 ; i < tailleMot ; i++)
                 {
@@ -99,11 +98,21 @@ int main()
             if (gagner(lettreTrouver, tailleMot))
                 {
                     printf("\n  Vous avez gagner ! Le mot secret etait : %s\n", motSecret);
-                    fichier = fopen ("score.txt","a");
-                   // fichier = fopen ("test.txt","a");
+
+                    fichier = fopen ("score.txt","a");//Ouvrir le fichier score.txt
                     if (fichier != NULL)
                     {
-                        fprintf(fichier,"%ld",coupsRestants);
+                        fprintf(fichier,"%ld\n",coupsRestants);
+
+                    }
+                    fclose(fichier);
+
+                    fichier = fopen ("test.txt","a");//Ouvrir le fichier test.txt
+                    if (fichier != NULL)
+                    {
+                       // fprintf(fichier,"%ld",coupsRestants);
+                        fprintf(fichier,"Votre score est %ld\n",coupsRestants);
+
                     }
                     fclose(fichier);
                 }
@@ -114,11 +123,11 @@ int main()
             free(lettreTrouver); // On libère la mémoire allouée manuellement
             }
             else
-            {
+                {
                 printf("Vous etes tetu reessayer\n");
                 goto men;
-            }
-            coupsRestants = 7;
+                }
+                coupsRestants = 7;
         break;
 
         case 2:
@@ -138,8 +147,8 @@ int main()
 
         case 3:
 
-               /* fichier = fopen("test.txt", "r+");
-                if (fichier != NULL)
+            fichier = fopen("test.txt", "r+");
+            if (fichier != NULL)
                 {
                     while (fgets(chaine, TAILLE_MAX,fichier)!= NULL)
                     {
@@ -149,50 +158,15 @@ int main()
                 }
                 printf ("\n\n");
 
-                fichier = fopen("score.txt", "r+");
-                if (fichier != NULL)
-                {
-                    int chaine[TAILLE_MAX];
-                    int scoreMax=0,i=0,j=0;
-                    int nbrElement=count(chaine);
-
-
-                    while (coupsRestants !=0)
-                    {
-                        coupsRestants /=10;
-                       count++;
-                    }
-                    printf ("Number of digits : %d",count);
-                 nbrElement=count;
-                    for (i=0;i<nbrElement;i++)
-                    {
-                        for(j=1;j<=nbrElement;j++)
-                        {
-                           int min=chaine[i],max=chaine[j];
-                           if (min>max)
-                           {
-                               if(min>max) scoreMax=min;
-                               printf("le score maximal est %d",scoreMax);
-                           }
-                           else
-                           {
-                               if(max>scoreMax) scoreMax=max;
-                               printf("le score maximal est %d",scoreMax);
-                           }
-                        }
-
-                    }
-
-                    fclose(fichier);
-
-                }*/
-
-
         break;
 
+        default:
+                printf("CHOIX ERONNE");
+        break;
     }
+
         printf("\n=====        Voulez vous revenir au Menu ?          =====\n");
-        printf("=====        Taper 1 pour revenir au menu principal ou 0 pour terminer        =====\n");
+        printf("\n=====        Taper 1 pour OUI et 0 pour Non           =====\n");
         scanf("%d",&menu2);
         printf("\n");
 

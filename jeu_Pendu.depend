@@ -15,21 +15,21 @@
 	<string.h>
 	"dictionnaire.h"
 
-1576095311 source:c:\users\ari\desktop\projet\jeu_pendu\dictionnaire.c
+1576264440 source:c:\users\ari\desktop\projet\jeu_pendu\dictionnaire.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"dictionnaire.h"
 
-1576095311 c:\users\ari\desktop\projet\jeu_pendu\dictionnaire.h
+1576238972 c:\users\ari\desktop\projet\jeu_pendu\dictionnaire.h
 
-1576223204 source:c:\users\ari\desktop\projet\jeu_pendu\main.c
+1576265136 source:c:\users\ari\desktop\projet\jeu_pendu\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<string.h>
 	"dictionnaire.h"
 
-1576109123 source:c:\users\ari\desktop\projet\jeu_pendu\s.c
+1576264188 source:c:\users\ari\desktop\projet\jeu_pendu\s.c
 
